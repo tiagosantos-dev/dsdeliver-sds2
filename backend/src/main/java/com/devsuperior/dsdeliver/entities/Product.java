@@ -23,6 +23,12 @@ public class Product implements Serializable {
 	private String imageUri;
 	
 	
+	
+	public Product() {
+		super();
+	}
+
+
 	public Product(String name, Double price, String description, String imageUri) {
 		super();
 		this.name = name;
