@@ -1,12 +1,10 @@
 package com.devsuperior.dsdeliver.services;
 
 import java.time.Instant;
-import java.util.List; 
+import java.util.List;
 import java.util.stream.Collectors;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +20,7 @@ import com.devsuperior.dsdeliver.repositories.ProductRepository;
 @Service
 public class OrderService {
 	
-	@Autowired
+	@Autowired	
 	private OrderRepository repository;
 	
 	@Autowired
@@ -47,5 +45,14 @@ public class OrderService {
 		return new OrderDTO(order);
 		
 	}
+	
+	@Transactional()
+	public OrderDTO alterStatus(Long id) {
+		Order order = this.repository.getOne(id);
+		order.setStatus(OrderStatus.DELIVERED);
+		order = repository.save(order);
+		return new OrderDTO(order);
+	}
+	
 	
 }
