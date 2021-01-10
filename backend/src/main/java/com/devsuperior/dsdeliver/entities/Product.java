@@ -22,8 +22,6 @@ public class Product implements Serializable {
 	private String description;
 	private String imageUri;
 	
-	
-	
 	public Product() {
 		super();
 	}
